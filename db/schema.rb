@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2025_02_14_093542) do
     t.string "first_name_kana", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
-    t.string "phone_nuber", null: false
+    t.string "phone_number", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -110,18 +110,18 @@ ActiveRecord::Schema.define(version: 2025_02_14_093542) do
     t.integer "item_id", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
-    t.integer "maiking_status", default: 0, null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "paymant_method", null: false
+    t.integer "payment_method", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "name", null: false
-    t.integer "shoping_cost", null: false
+    t.integer "shopping_cost", null: false
     t.integer "total_payment", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
