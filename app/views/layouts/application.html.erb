@@ -9,14 +9,27 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <nav>
         <div>
-        <span>nagano_cake</span>
-        
+          <span>nagano_cake</span>
+          <button>
+          </button>
           <div>
+            <ul>
+            <% if customer_signed_in? %>
+              <li>マイページ</li>
+              <li>商品一覧</li>
+              <li>カート</li>
+              <li>ログアウト</li>
+            <% else %>
+              <li>About</li>
+              <li>商品一覧</li>
+              <li>新規登録</li>
+              <li>ログイン</li>
+              <% end %>
+            </ul>
           </div>
         </div>
       </nav>
