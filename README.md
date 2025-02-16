@@ -42,3 +42,4 @@ git log
 (_ *˘ω˘)_ｽﾔｧ…
 フトン
 admin_sessions_achi
+public_customers_sho
