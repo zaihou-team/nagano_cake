@@ -41,3 +41,4 @@ git log
 おやすみ
 (_ *˘ω˘)_ｽﾔｧ…
 フトン
+admin_sessions_achi
