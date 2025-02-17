@@ -19,15 +19,15 @@
           <div>
             <ul>
             <% if customer_signed_in? %>
-              <li>マイページ</li>
-              <li>商品一覧</li>
-              <li>カート</li>
+              <li><%= link_to "マイページ", mypage_path %></li>
+              <li><%= link_to "商品一覧", items_path %></li>
+              <li><%= link_to "カート", cart_items_path %></li>
               <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
             <% else %>
               <li>About</li>
-              <li>商品一覧</li>
-              <li>新規登録</li>
-              <li>ログイン</li>
+              <li><%= link_to "商品一覧", items_path %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path %></li>
+              <li><%= link_to "ログイン", customer_session_path %></li>
               <% end %>
             </ul>
           </div>
