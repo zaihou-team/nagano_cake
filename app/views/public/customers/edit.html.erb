@@ -1,0 +1,14 @@
+<h1>アカウント情報編集</h1>
+
+<%= form_with(model: @customer, url: update_infomation_path, method: :patch, local: true) do |f| %>
+  <p>姓: <%= f.text_field :last_name %></p>
+  <p>名: <%= f.text_field :first_name %></p>
+  <p>郵便番号: <%= f.text_field :postal_code %></p>
+  <p>住所: <%= f.text_field :address %></p>
+  <p>電話番号: <%= f.text_field :phone_number %></p>
+  <p>メールアドレス: <%= f.email_field :email %></p>
+
+  <%= f.submit '更新' %>
+<% end %>
+
+<%= link_to '戻る', mypage_path %>
