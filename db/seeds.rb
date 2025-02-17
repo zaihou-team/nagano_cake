@@ -1,8 +1,8 @@
 Customer.create(
   email: "test@t",
   password: "000000",
-  last_name: "satou", 
-  first_name:"hanako", 
+  last_name: "佐藤", 
+  first_name:"花子", 
   last_name_kana: "サトウ", 
   first_name_kana: "ハナコ", 
   postal_code: "1112222", 
