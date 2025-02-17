@@ -24,7 +24,7 @@ git push origin ブランチ名
   git checkout 自分のブランチ
 ## 4.自分のブランチにマージする（取り込む）
   git merge develop
-　
+
 
 
 # 変更点の確認
