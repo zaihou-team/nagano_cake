@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   scope module: :public do
     devise_for :customers, skip: :password, controllers: {
-      registrations: 'public/customers/registrations',
-      sessions: 'public/customers/sessions'
+      registrations: 'public/registrations',
+      sessions: 'public/sessions'
     }
     root 'homes#top'
     get "/about" => "public/homes#about", as: "about"
