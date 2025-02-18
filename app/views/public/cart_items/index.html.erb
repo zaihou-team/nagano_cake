@@ -1,0 +1,43 @@
+<h1>ショッピングカート</h1>
+
+<!-- カートを空にするボタン -->
+<%= button_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: { confirm: "カートを空にしますか？" }, class: "btn btn-danger" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.item.name %></td>
+        <td><%= number_to_currency(cart_item.item.price) %></td>
+        <td>
+          <%= form_with(model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true) do |f| %>
+            <%= f.number_field :count, value: cart_item.count, min: 1 %>
+            <%= f.submit "変更", class: "btn btn-secondary" %>
+          <% end %>
+        </td>
+        <td><%= number_to_currency(cart_item.item.price * cart_item.count) %></td>
+        <td>
+          <%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- 合計金額 -->
+<h2>合計金額: <%= number_to_currency(@total_price) %></h2>
+
+<!-- 買い物を続けるボタン -->
+<%= link_to "買い物を続ける", items_path, class: "btn btn-outline-primary" %>
+
+<!-- 情報入力に進むボタン -->
+<%= link_to "情報入力に進む", new_order_path, class: "btn btn-primary" %>
