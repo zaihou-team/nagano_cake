@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       sessions: 'public/sessions'
     }
     root 'homes#top'
-    get "/about" => "public/homes#about", as: "about"
+    get "/about" => "homes#about", as: "about"
     resources :homes, only: [:top, :about ]
     resources :items, only: [:index, :show ]
     resources :genre, only: [:index] 

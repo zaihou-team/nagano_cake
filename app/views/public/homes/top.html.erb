@@ -1,22 +1,24 @@
 <div>
-  <div><%# class="container" %>
-    <div><%# class="row" %>
-      <div><%# ジャンルナビゲーション  class=col-3 %>
-        <p>ジャンル検索</p>
-        <ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-3 border text-center p-3">
+        <h5>ジャンル検索</h5>
+        <ul class="list-unstyled" style="text-align: left">
           <% @genres.each do |genre_name| %>
-          <li><%= genre_name %></li> <%# 検索の仕方は保留 %>
+          <li class="text-start"><%= genre_name %></li> <%# 検索の仕方は保留 %>
           <% end %>
         </ul>
       </div>
-      <div><%# class=col-5 md-3 %>
-        <div> <%# class="image-container" style="background-image: url('<%= image_path('画像ファイル名.jpg') %>'<%#); background-size: cover; height: 300px %> 
-          <p>ようこそ、ながのcakeへ!<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。</p>
+      <div class="col-md-9">
+        <div class="image-container">
+          <div>
+            <p class="p-4 border">ようこそ、ながのcakeへ!<br>
+              このサイトは、ケーキ販売のECサイトになります。
+              会員でない方も商品の閲覧はできますが、
+              購入には会員登録が必要になります。</p>
+          </div>
         </div>
-        <%# <h2>新着情報</h2> %>
+        <%# <h3 class="mt-4">新着情報</h3> %>
         <%# <ul> %>
           <%# <% @items.each do |item| %><%#%>
           <%# <li> %>
@@ -26,7 +28,7 @@
           <%# </li> %>
           <%# <%#%>
         <%# </ul> %>
-        <div><%# 左寄せ %>
+        <div style="text-align: right;"><%# 左寄せ %>
           <%= link_to "すべての商品を見る >", items_path %> 
         </div>
       </div>
