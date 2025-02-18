@@ -1,0 +1,10 @@
+<h1>配送先編集</h1>
+
+<%= form_with model: @address, url: address_path(@address), method: :patch, local: true do |f| %>
+  <p>郵便番号: <%= f.text_field :postal_code %></p>
+  <p>住所: <%= f.text_field :address %></p>
+  <p>宛名: <%= f.text_field :name %></p>
+  <%= f.submit '更新' %>
+<% end %>
+
+<%= link_to '戻る', addresses_path %>

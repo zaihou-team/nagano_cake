@@ -10,6 +10,23 @@ Customer.create(
   phone_number:"00011112222"
 )
 
+Customer.create!(
+  {
+    last_name: "鬼龍院",
+    first_name: "武",
+    last_name_kana: "キリュウイン",
+    first_name_kana: "タケシ",
+    postal_code: "1000001",
+    address: "東京都千代田区1-1-1",
+    phone_number: "09012345678",
+    email: "taro.sato@example.com",
+    encrypted_password: Devise::Encryptor.digest(Customer, "password123"),
+    is_active: false,
+    created_at: Time.current,
+    updated_at: Time.current
+  }
+)
+
 genre1 = Genre.create!(genre_name: "チョコレート")
 genre2 = Genre.create!(genre_name: "フルーツ")
 
