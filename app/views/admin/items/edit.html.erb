@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <div class="card shadow-sm p-5 border-0" style="background: #f8f9fa; border-radius: 8px;">
+    <h2 class="mb-4 text-center text-primary font-weight-bold">商品編集</h2>
+
+    <%= form_with model: [:admin, @item], do |f| %>
+      <div class="form-group">
+        <label class="font-weight-bold">商品画像</label>
+        <div class="custom-file">
+          <%= f.file_field :image, class: "custom-file-input", id: "customFile" %>
+          <label class="custom-file-label" for="customFile">ファイルを選択</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold">商品名</label>
+        <%= f.text_field :name, class: "form-control", placeholder: "商品名を入力" %>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold">商品説明</label>
+        <%= f.text_area :introduction, class: "form-control", rows: 4, placeholder: "商品の説明を入力" %>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold">ジャンル</label>
+        <%= f.select :genre_id, Genre.pluck(:genre_name, :id), { include_blank: "選択してください" }, class: "form-control custom-select" %>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold">税抜価格</label>
+        <div class="input-group">
+          <%= f.number_field :price, class: "form-control", placeholder: "価格を入力" %>
+          <div class="input-group-append">
+            <span class="input-group-text">円</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold">販売ステータス</label>
+        <div class="d-flex align-items-center">
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :is_active, true, class: "form-check-input" %>
+            <label class="form-check-label ml-1">販売中</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :is_active, false, class: "form-check-input" %>
+            <label class="form-check-label ml-1">販売停止中</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <%= f.submit '変更を保存', class: "btn btn-primary btn-lg px-4 shadow-sm" %>
+      </div>
+    <% end %>
+  </div>
+</div>
