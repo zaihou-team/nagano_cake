@@ -4,10 +4,11 @@ Rails.application.routes.draw do
       registrations: 'public/customers/registrations',
       sessions: 'public/customers/sessions'
     }
-    root 'homes#top' #吉牟田追記（2/17）
+    root 'homes#top'
+    get "/about" => "public/homes#about", as: "about"
     resources :homes, only: [:top, :about ]
     resources :items, only: [:index, :show ]
-    resources :genre, only: [:index] #吉牟田追記（2/17）
+    resources :genre, only: [:index] 
     resources :addresses, only: [:index, :edit, :create, :destroy, :update ]
     resources :cart_items, only: [:index, :create, :destroy, :update ] do
       collection do

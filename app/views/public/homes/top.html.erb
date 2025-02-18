@@ -4,8 +4,8 @@
       <div><%# ジャンルナビゲーション  class=col-3 %>
         <p>ジャンル検索</p>
         <ul>
-          <%= @genres.each do |genre| %>
-          <li><%= genre.name %></li> <%# 検索の仕方は保留 %>
+          <% @genres.each do |genre_name| %>
+          <li><%= genre_name %></li> <%# 検索の仕方は保留 %>
           <% end %>
         </ul>
       </div>
@@ -16,22 +16,20 @@
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。</p>
         </div>
-        <h2>新着情報</h2>
-        <ul>
-          <% @items.each do |item| %>
-          <li>
-          <p></p> <%# <%= item.image %><%# %>
-          <p><%= item.name %></p>
-          <p>￥<%= item.price %></p>
-          </li>
-          <% end %>
-        </ul>
-          <div><%# 左寄せ %>
-            <%= link_to "すべての商品を見る >", items_path %> 
-          </div>
+        <%# <h2>新着情報</h2> %>
+        <%# <ul> %>
+          <%# <% @items.each do |item| %><%#%>
+          <%# <li> %>
+          <%# <p></p> %> <%# <%= item.image %><%# %>
+          <%# <p><%= item.name %><%#</p>> %>
+          <%# <p>￥<%= item.price %><%#</p> %>
+          <%# </li> %>
+          <%# <%#%>
+        <%# </ul> %>
+        <div><%# 左寄せ %>
+          <%= link_to "すべての商品を見る >", items_path %> 
+        </div>
       </div>
-    </div>
-    <div>
     </div>
   </div>
 </div>
