@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h2 class="mb-4">商品新規登録</h2>
+  <%= form_with model: [:admin, @item] do |f| %>
+    <div class="form-group">
+      <label>商品画像</label>
+      <%= f.file_field :image, class: "form-control-file" %>
+    </div>
+    <div class="form-group">
+      <label>商品名</label>
+      <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+    </div>
+    <div class="form-group">
+      <label>商品説明</label>
+      <%= f.text_area :introduction, class: "form-control", rows: 3, placeholder: "ここに説明文を記述します" %>
+    </div>
+    <div class="form-group">
+      <label>ジャンル</label>
+      <%= f.select :genre_id, Genre.pluck(:genre_name, :id), { include_blank: "選択してください" }, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>税抜価格</label>
+      <div class="input-group">
+        <%= f.number_field :price, class: "form-control" %>
+        <div class="input-group-append">
+          <span class="input-group-text">円</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>販売ステータス</label>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :is_active, true, class: "form-check-input" %>
+        <label class="form-check-label">販売中</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :is_active, false, class: "form-check-input" %>
+        <label class="form-check-label">販売停止中</label>
+      </div>
+    </div>
+    <%= f.submit '新規登録', class: "btn btn-success" %>
+  <% end %>
+</div>
