@@ -43,3 +43,4 @@ git log
 フトン
 admin_sessions_achi
 public_customers_sho
+public_orders_sho
