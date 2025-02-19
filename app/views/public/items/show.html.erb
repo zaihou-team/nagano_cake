@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 border text-center p-3">
+      <h5>ジャンル検索</h5>
+      <ul class="list-unstyled" style="text-align: left">
+        <% @genres.each do |genre_name| %>
+        <li class="text-start"><%= genre_name %></li> <%# 検索の仕方は保留 %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <%= form_with(model: @item, url: {action: "add_to_cart", id: @item.id}, local: true) do |f| %>
+      <div class="col-md-9">
+        <h3><%= @item.name %></h3>
+        <p><%= @item.introduction %></p>
+        <p><span style="font-weight: bold;">¥<%= number_with_delimiter(@item.price*1.1.floor) %></span>&lpar;税込&rpar;</p>
+        <%= f.select :amount, (1..3).map { |n| [n, n] } %>
+        <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div><%# row %>
+</div><%# container %>

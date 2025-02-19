@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 border text-center p-3">
+      <h5>ジャンル検索</h5>
+      <ul class="list-unstyled" style="text-align: left">
+        <% @genres.each do |genre_name| %>
+        <li class="text-start"><%= genre_name %></li> <%# 検索の仕方は保留 %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <h2 class="fw-bold">
+        <%= @selected_genre.present? ? "#{@selected_genre} 一覧" : "商品一覧" %> （全<%= @items.total_count %>件）
+      </h2>
+
+      <div class="row row-cols-2 row-cols-md-3 g-4">
+        <% @items.each do |item| %>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+              <%= link_to item_path(item.id) do %>
+                <h5 class="card-title text-center"><%= item.name %></h5>
+                <p class="text-center text-muted">¥<%= number_to_currency(item.price, unit: "",precision: 0) %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- ページネーション -->
+      <div class="d-flex justify-content-center mt-3">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
