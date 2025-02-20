@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 border text-center p-3">
+      <h5>ジャンル検索</h5>
+      <ul class="list-unstyled" style="text-align: left">
+        <% @genres.each do |genre_name| %>
+        <li class="text-start"><%= genre_name %></li> <%# 検索の仕方は保留 %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <%= form_with url: cart_items_path, method: :post do %>
+      <div class="col-md-9">
+        <div>
+          <%= image_tag @item. get_image(300,200) %>
+        </div> <%# 画僧のタグ%>
+        <h3><%= @item.name %></h3>
+        <p><%= @item.introduction %></p>
+        <p><span style="font-weight: bold; font-size: 150%;">¥<%= number_with_delimiter(@item.price*1.1.floor) %></span>&lpar;税込&rpar;</p>
+        <%= select_tag :quantity, options_for_select((1..3).to_a, 1) %>
+        <%= hidden_field_tag :item_id, @item.id %>
+        <%= submit_tag "カートに入れる", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div><%# row %>
+</div><%# container %>

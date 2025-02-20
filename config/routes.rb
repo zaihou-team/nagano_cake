@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :genre, only: [:index] 
     resources :addresses, only: [:index, :edit, :create, :destroy, :update ]
     resources :cart_items, only: [:index, :create, :destroy, :update ] do
+      post 'add_to_cart', on: :member
       collection do
         delete 'destroy_all'
       end
