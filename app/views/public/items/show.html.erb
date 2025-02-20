@@ -9,13 +9,14 @@
       </ul>
     </div>
     <div class="col-md-9">
-      <%= form_with(model: @item, url: {action: "add_to_cart", id: @item.id}, local: true) do |f| %>
+      <%= form_with url: cart_items_path, method: :post do %>
       <div class="col-md-9">
         <h3><%= @item.name %></h3>
         <p><%= @item.introduction %></p>
-        <p><span style="font-weight: bold;">¥<%= number_with_delimiter(@item.price*1.1.floor) %></span>&lpar;税込&rpar;</p>
-        <%= f.select :amount, (1..3).map { |n| [n, n] } %>
-        <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <p><span style="font-weight: bold; font-size: 150%;">¥<%= number_with_delimiter(@item.price*1.1.floor) %></span>&lpar;税込&rpar;</p>
+        <%= select_tag :quantity, options_for_select((1..3).to_a, 1) %>
+        <%= hidden_field_tag :item_id, @item.id %>
+        <%= submit_tag "カートに入れる", class: "btn btn-primary" %>
       </div>
     </div>
     <% end %>
