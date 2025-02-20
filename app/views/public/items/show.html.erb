@@ -11,6 +11,9 @@
     <div class="col-md-9">
       <%= form_with url: cart_items_path, method: :post do %>
       <div class="col-md-9">
+        <div>
+          <%= image_tag @item. get_image(300,200) %>
+        </div> <%# 画僧のタグ%>
         <h3><%= @item.name %></h3>
         <p><%= @item.introduction %></p>
         <p><span style="font-weight: bold; font-size: 150%;">¥<%= number_with_delimiter(@item.price*1.1.floor) %></span>&lpar;税込&rpar;</p>
