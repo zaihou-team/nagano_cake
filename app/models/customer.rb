@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
       devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    validates :address,:email, presence: true
+    validates :address,presence: true
     validates :last_name_kana, presence: true, format: {with: /\A[ァ-ヶー]+\z/}
     validates :first_name_kana, presence: true, format: {with: /\A[ァ-ヶー]+\z/}
     validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
