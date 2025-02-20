@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="card shadow-sm p-4 border rounded">
+    <h2 class="mb-4 text-center text-secondary font-weight-bold">
+      注文履歴詳細
+    </h2>
+
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>購入者</th>
+          <td><%= @order.customer.full_name %></td>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @order.postal_code %> <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <% form_select_value = [] %>
+              <% Order.statuses_i18n.each { |key, value| form_select_value << [value, key] } %>
+              <%= form_with model: [:admin, @order], method: :patch, class: "d-flex" do |f| %>
+                <%= f.select :status, form_select_value, class: "form-control mr-2" %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped text-center">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price.to_s(:delimited) %>円</td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.subtotal %>円</td>
+            <td>
+              <%= form_with model: [:admin, order_detail], method: :patch, class: "d-flex align-items-center" do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses.map { |key, value| [OrderDetail.making_statuses_i18n.with_indifferent_access[key.to_sym], key] }, { prompt: "選択してください" }, class: "form-control mr-2" %>
+                <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="text-right mt-4">
+      <p><strong>商品合計：</strong> <%= @order.total_payment.to_s(:delimited) %>円</p>
+      <p><strong>送料：</strong> <%= @order.shopping_cost.to_s(:delimited) %>円</p>
+      <p class="h5"><strong>請求金額合計：</strong> <%= (@order.total_payment + @order.shopping_cost).to_s(:delimited) %>円</p>
+    </div>
+
+  </div>
+</div>
