@@ -3,14 +3,14 @@ class Public::CartItemsController < ApplicationController
   
     def index
       @cart_items = current_customer.cart_items.includes(:item)
-      @total_price = @cart_items.sum { |cart_item| cart_item.item.price * cart_item.count }
+      @total_price = @cart_items.sum { |cart_item| cart_item.item.price * cart_item.amount }
     end
   
     def create
       @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
   
       if @cart_item
-        @cart_item.count += params[:cart_item][:count].to_i
+        @cart_item.amount += params[:cart_item][:amount].to_i
       else
         @cart_item = current_customer.cart_items.new(cart_item_params)
       end
@@ -45,6 +45,6 @@ class Public::CartItemsController < ApplicationController
     private
   
     def cart_item_params
-      params.require(:cart_item).permit(:item_id, :count)
+      params.require(:cart_item).permit(:item_id, :amount)
     end
   end
