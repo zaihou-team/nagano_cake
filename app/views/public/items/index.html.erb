@@ -19,7 +19,7 @@
             <div class="card h-100">
               <div class="card-body">
               <%= link_to item_path(item.id) do %>
-                <div><%= image_tag item.get_image(300,200) %></div>
+                <div><%= image_tag item.get_image %></div>
                 <h5 class="card-title text-center"><%= item.name %></h5>
                 <p class="text-center text-muted">¥<%= number_to_currency(item.price, unit: "",precision: 0) %></p>
               </div>
