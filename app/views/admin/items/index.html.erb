@@ -17,7 +17,7 @@
           <td>
             <%= link_to item.name, admin_item_path(item.id), class: "text-dark fw-bold" %>
           </td>
-          <td><%= item.price %></td>
+          <td><%= item.price.to_s(:delimited) %></td>
           <td><%= item.genre.genre_name %></td>
           <td>
             <span class="<%= item.is_active ? 'text-success fw-bold' : 'text-secondary fw-bold' %>">

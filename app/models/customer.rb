@@ -3,8 +3,8 @@ class Customer < ApplicationRecord
     has_many :cart_items, dependent: :destroy
     has_many :orders, dependent: :destroy
 
-      devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    devise :database_authenticatable, :registerable,
+      :recoverable, :rememberable, :validatable
 
     validates :address,presence: true
     validates :last_name_kana, presence: true, format: {with: /\A[ァ-ヶー]+\z/}

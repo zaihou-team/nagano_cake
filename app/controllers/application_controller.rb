@@ -1,9 +1,18 @@
 class ApplicationController < ActionController::Base
     helper_method :current_customer
     
-    # def current_customer
-    #     User.find(1) #常にid:1のユーザーを返す
-    # end
-end
+    
+  protected
 
-#実装完了したら上記は消すこと！
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_root_path 
+    when Customer
+      root_path 
+    else
+      root_path
+    end
+  end
+
+end
