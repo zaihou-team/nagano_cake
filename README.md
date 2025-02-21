@@ -44,3 +44,5 @@ git log
 admin_sessions_achi
 public_customers_sho
 public_orders_sho
+
+public_registrations_Yoshi
