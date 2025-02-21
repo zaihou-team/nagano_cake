@@ -1,7 +1,7 @@
 <div>
   <div class="container">
     <div class="row">
-      <div class="col-3 border text-center p-3">
+      <div class="col-12 col-md-3 mb-3 border text-center p-3">
         <h5>ジャンル検索</h5>
         <ul class="list-unstyled" style="text-align: left">
           <% @genres.each do |genre_name| %>
@@ -18,20 +18,26 @@
               購入には会員登録が必要になります。</p>
           </div>
         </div>
-        <h3 class="mt-4">新着情報</h3>
-        <%# <ul> %>
-          <%# <% @items.each do |item| %><%#%>
-          <%# <li> %>
-          <%# <p></p> %> <%# <%= item.image %><%# %>
-          <%# <p><%= item.name %><%#</p>> %>
-          <%# <p>￥<%= item.price %><%#</p> %>
-          <%# </li> %>
-          <%# <%#%>
-        <%# </ul> %>
-        <div style="text-align: right;">
-          <%= link_to "すべての商品を見る >", items_path %> 
-        </div>
+
+        <h3 class="mb-3">新着情報</h3>
+        <div class="row row-cols-2 row-cols-md-4 g-4">
+          <% @items.each do |item| %>
+          <div class="col">
+            <div class="card h-100">
+              <%= link_to item_path(item.id), class: "text-decoration-none text-dark" do %>
+                <img><%= image_tag item.get_image(300,200) %></img>
+                <div class="card-body">
+                  <h5><%= item.name %></h5>
+                  <p>￥<%= item.price %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
+
+      <div style="text-align: right;">
+        <%= link_to "すべての商品を見る >", items_path, class: "text-primary" %>
+      </div>
   </div>
 </div>
