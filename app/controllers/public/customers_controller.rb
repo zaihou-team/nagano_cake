@@ -2,16 +2,9 @@ class Public::CustomersController < ApplicationController
     before_action :authenticate_customer!
     before_action :set_customer, only: [:show, :edit, :update, :confirm, :deactivate]
     def new
-      @customer = Customer.new
     end
 
     def create
-    
-      
-        
-      
-        
-      
     end
 
     def show
