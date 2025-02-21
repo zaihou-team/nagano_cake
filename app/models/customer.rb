@@ -6,8 +6,13 @@ class Customer < ApplicationRecord
       devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    validates :last_name, :first_name, :last_name_kana, :first_name_kana,
-            :postal_code, :address, :phone_number, :email, presence: true
+    validates :address,presence: true
+    validates :last_name_kana, presence: true, format: {with: /\A[ァ-ヶー]+\z/}
+    validates :first_name_kana, presence: true, format: {with: /\A[ァ-ヶー]+\z/}
+    validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
+    validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+    validates :last_name, :first_name, presence: true, length: { in: 1..50 }, format: { with: /\A[一-龥ぁ-んァ-ヶ々]+\z/}
+    validates :email, presence: true, format: {with: /\A\S+@\S+\.\S+\z/ }
 
     def active_for_authentication?
       super && is_active?
