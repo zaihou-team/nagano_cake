@@ -63,4 +63,8 @@ class Public::OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shopping_cost, :total_payment)
     end
+
+    def set_default_payment_method
+      self.payment_method ||= "credit_card"
+    end
   end

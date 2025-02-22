@@ -2,7 +2,7 @@
 
 <%= form_with model: @order, url: confirm_orders_path, method: :get do |f| %>
   <h3>支払方法</h3>
-  <%= f.radio_button :payment_method, "credit_card" %> クレジットカード
+  <%= f.radio_button :payment_method, "credit_card" , checked: true %> クレジットカード
   <%= f.radio_button :payment_method, "bank_transfer" %> 銀行振込
 
   <h3>お届け先</h3>
