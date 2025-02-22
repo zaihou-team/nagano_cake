@@ -1,0 +1,9 @@
+<h1>退会確認</h1>
+<p>本当に退会しますか？これまでの購入履歴が閲覧できなくなります。<br>
+退会する場合は、「退会する」をクリックしてください。</p>
+
+<%= form_with url: withdraw_path, method: :patch do %>
+  <%= submit_tag '退会する', data: { confirm: '本当に退会しますか？' } %>
+<% end %>
+
+<%= link_to '退会しない', mypage_path %>
