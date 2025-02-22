@@ -1,8 +1,0 @@
-<h1>退会確認</h1>
-<p>本当に退会しますか？この操作は元に戻せません。</p>
-
-<%= form_with url: deactivate_path, method: :patch do %>
-  <%= submit_tag '退会する', data: { confirm: '本当に退会しますか？' } %>
-<% end %>
-
-<%= link_to 'キャンセル', mypage_path %>
