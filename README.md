@@ -46,3 +46,4 @@ public_customers_sho
 public_orders_sho
 
 public_registrations_Yoshi
+public_homes_Yoshi
