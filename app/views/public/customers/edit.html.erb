@@ -10,7 +10,6 @@
         <p>住所: <%= f.text_field :address %></p>
         <p>電話番号: <%= f.text_field :phone_number %></p>
         <p>メールアドレス: <%= f.email_field :email %></p>
-
         <%= f.submit '変更内容を保存', class: "btn btn-success" %>
         <%= link_to '退会確認', unsubscribe_path, class: "btn btn-danger" %>
       <% end %>
