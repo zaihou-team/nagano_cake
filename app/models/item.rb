@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :is_active, inclusion: { in: [true, false] }
 
 
-  def get_image(width,height)
+  def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/delicious_cake.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
