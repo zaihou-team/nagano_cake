@@ -1,27 +1,39 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-3 mb-3 border text-center p-3">
-      <h5>ジャンル検索</h5>
-      <ul class="list-unstyled" style="text-align: left">
-        <% @genres.each do |genre_name| %>
-        <li class="text-start"><%= genre_name %></li> <%# 検索の仕方は保留 %>
-        <% end %>
-      </ul>
+    <div class="col-12 col-md-3 mb-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <h5 class="fw-bold text-primary">ジャンル一覧</h5>
+          <ul class="list-group list-group-flush">
+            <% @genres.each do |genre_name| %>
+              <li class="list-group-item text-start"><%= genre_name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="col-md-9">
-      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-        <div class="col-md-9">
-          <div>
-            <%= image_tag @item.get_image(300,200) %>
-          </div> <%# 画僧のタグ%>
-          <h3><%= @item.name %></h3>
-          <p><%= @item.introduction %></p>
-          <p><span style="font-weight: bold; font-size: 150%;">￥<%= number_with_delimiter(@item.price*1.1.floor) %></span>&lpar;税込&rpar;</p>
-          <%= f.select :amount, options_for_select((1..3).to_a, 1) %>
-          <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+      <div class="card shadow-sm border-0">
+        <div class="row g-0">
+          <div class="col-md-5 text-center p-4">
+            <%= image_tag @item.get_image, class: "img-fluid rounded" %>
+          </div>
+          <div class="col-md-7 p-4">
+            <h3 class="fw-bold"><%= @item.name %></h3>
+            <p class="text-muted"><%= @item.introduction %></p>
+            <p>
+              ￥<%= number_with_delimiter(@item.price * 1.1.floor) %>（税込）
+            </p>
+            <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+              <div class="d-flex align-items-center">
+                <%= f.select :amount, options_for_select((1..3).to_a, 1), class: "form-select w-auto me-3" %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.submit "カートに入れる", class: "btn btn-primary rounded-pill px-4" %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div><%# row %>
-</div><%# container %>
+  </div>
+</div>
