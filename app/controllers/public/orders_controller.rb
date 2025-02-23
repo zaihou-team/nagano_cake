@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
     def confirm
       @order = Order.new(order_params)
       @cart_items = current_customer.cart_items
-      @total_price = @cart_items.sum { |ci| ci.item.price * ci.count }
+      @total_price = @cart_items.sum { |ci| ci.item.price * ci.amount }
   
       case params[:order][:select_address].to_i
       when 0
@@ -33,16 +33,16 @@ class Public::OrdersController < ApplicationController
       @order.save
   
       current_customer.cart_items.each do |cart_item|
-        OrderItem.create!(
+        OrderDetail.create!(
           order: @order,
           item_id: cart_item.item_id,
-          count: cart_item.count,
-          buyeddment_price: cart_item.item.price
+          amount: cart_item.amount,
+          price: cart_item.item.price
         )
       end
   
       current_customer.cart_items.destroy_all
-      redirect_to orders_thanks_path
+      redirect_to thanks_orders_path
     end
   
     def index
@@ -62,5 +62,9 @@ class Public::OrdersController < ApplicationController
   
     def order_params
       params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shopping_cost, :total_payment)
+    end
+
+    def set_default_payment_method
+      self.payment_method ||= "credit_card"
     end
   end

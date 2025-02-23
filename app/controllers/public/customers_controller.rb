@@ -27,8 +27,8 @@ class Public::CustomersController < ApplicationController
       # 退会確認ページの表示
     end
   
-    def deactivate
-      @customer.update(is_active: false)
+    def withdraw
+      current_customer.update(is_active: false)
       sign_out @customer  # 強制ログアウト
       redirect_to root_path, notice: '退会処理が完了しました。'
     end

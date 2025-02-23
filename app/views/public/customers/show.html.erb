@@ -1,8 +1,16 @@
-<h1>マイページ</h1>
-<p>名前: <%= @customer.last_name %> <%= @customer.first_name %></p>
-<p>住所: <%= @customer.postal_code %> <%= @customer.address %></p>
-<p>電話番号: <%= @customer.phone_number %></p>
-<p>メールアドレス: <%= @customer.email %></p>
-
-<%= link_to '情報編集', infomation_edit_path %> |
-<%= link_to '退会確認', unsubscribe_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h3>マイページ</h3>
+        <h5>登録情報</h5><span><%= link_to '編集する', infomation_edit_path, class: "btn btn-success" %></span>
+        <div class="mt-3">
+          <p>名前: <%= @customer.last_name %> <%= @customer.first_name %></p>
+          <p>住所: <%= @customer.postal_code %> <%= @customer.address %></p>
+          <p>電話番号: <%= @customer.phone_number %></p>
+          <p>メールアドレス: <%= @customer.email %></p>
+          <p>配送先<%= link_to '一覧を見る', addresses_path, class: "btn btn-primary" %></p>
+          <p>注文履歴<%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %></p>
+        </div> <%# mt-3 %>
+    </div> <%# col-md-8 offset-md-2 %>
+  </div> <%# row %>
+</div><%# container %>

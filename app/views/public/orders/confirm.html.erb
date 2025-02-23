@@ -17,8 +17,8 @@
     <tr>
       <td><%= cart_item.item.name %></td>
       <td><%= number_to_currency(cart_item.item.price) %></td>
-      <td><%= cart_item.count %></td>
-      <td><%= number_to_currency(cart_item.item.price * cart_item.count) %></td>
+      <td><%= cart_item.amount %></td>
+      <td><%= number_to_currency(cart_item.item.price * cart_item.amount) %></td>
     </tr>
   <% end %>
 </table>
