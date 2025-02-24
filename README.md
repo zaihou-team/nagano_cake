@@ -33,17 +33,3 @@ git diff
 # コミット履歴
 git log
 
-
-#### 小見出し
-
-おはよう
-ちわっす..._φ(ﾟДﾟ )
-おやすみ
-(_ *˘ω˘)_ｽﾔｧ…
-フトン
-admin_sessions_achi
-public_customers_sho
-public_orders_sho
-
-public_registrations_Yoshi
-public_homes_Yoshi
