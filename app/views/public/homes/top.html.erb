@@ -1,0 +1,43 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3 mb-3 border text-center p-3">
+        <h5>ジャンル一覧</h5>
+        <ul class="list-unstyled" style="text-align: left">
+          <% @genres.each do |genre_name| %>
+          <li class="text-start"><%= genre_name %></li> <%# 検索の仕方は保留 %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <div class="image-container">
+          <div>
+            <p class="p-4 border">ようこそ、ながのcakeへ!<br>
+              このサイトは、ケーキ販売のECサイトになります。
+              会員でない方も商品の閲覧はできますが、
+              購入には会員登録が必要になります。</p>
+          </div>
+        </div>
+
+        <h3 class="mb-3">新着情報</h3>
+        <div class="row row-cols-2 row-cols-md-4 g-4">
+          <% @items.each do |item| %>
+          <div class="col">
+            <div class="card h-100">
+              <%= link_to item_path(item.id), class: "text-decoration-none text-dark" do %>
+                <img><%= image_tag item.get_image %></img>
+                <div class="card-body">
+                  <h5><%= item.name %></h5>
+                  <p>￥<%= item.price %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div style="text-align: right;">
+        <%= link_to "すべての商品を見る >", items_path, class: "text-primary" %>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1>アカウント情報編集</h1>
+
+      <%= form_with model: @customer, url: infomation_path, method: :patch do |f| %>
+        <p>姓: <%= f.text_field :first_name %></p>
+        <p>名: <%= f.text_field :last_name %></p>
+        <p>郵便番号: <%= f.text_field :postal_code %></p>
+        <p>住所: <%= f.text_field :address %></p>
+        <p>電話番号: <%= f.text_field :phone_number %></p>
+        <p>メールアドレス: <%= f.email_field :email %></p>
+        <%= f.submit '変更内容を保存', class: "btn btn-success" %>
+        <%= link_to '退会確認', unsubscribe_path, class: "btn btn-danger" %>
+      <% end %>
+
+      <%= link_to '戻る', mypage_path %>
+    </div> <%# col-md-8 offset-md-2 %>
+  </div> <%# row %>
+</div><%# container %>
